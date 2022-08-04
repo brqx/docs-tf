@@ -42,7 +42,7 @@ resource "aws_instance" "bastion" {
 
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh_sg"
-  description = "Allow SSH inbound connections"
+  description = "Allow BRQX SSH inbound connections"
   vpc_id      = aws_vpc.main.id
 
   # Vamos a intentar que acepte 60022
