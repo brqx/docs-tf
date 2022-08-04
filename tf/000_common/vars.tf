@@ -30,14 +30,16 @@ variable "keypair_name" {
 # Variables para Base de datos
 variable "db_username" {
   description = "Username for the RDS Postgres instance"
+  default     = ""
 }
 
 variable "db_password" {
   description = "Password for the RDS postgres instance"
+  default     = ""
 }
 
 variable "sqlfile" {
   description = "Script que se pasa a la base de datos"
-  default = "./resources/db/palillos_2022.sql"
+  default     = "./resources/db/palillos_2022.sql"
 }
 

@@ -15,7 +15,7 @@ resource "aws_subnet" "private" {
 
   tags = merge(
     local.common_tags,
-    tomap({ "Name" = "${local.prefix}-${each.value.pvname}-privatesubnet" })
+    tomap({ "Name" = "${local.prefix}-${each.value.pvname}" })
   )
 }
 
@@ -24,6 +24,11 @@ resource "aws_route_table" "private" {
 
   vpc_id = aws_vpc.main.id
 
+  # La subred privada solo puede salir
+  route {
+        cidr_block = "0.0.0.0/0"
+        nat_gateway_id = aws_nat_gateway.public["${each.key}"].id
+    }
   tags = merge(
     local.common_tags,
     tomap({ "Name" = "${local.prefix}-${each.value.pvname}-routetable" })

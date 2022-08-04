@@ -28,6 +28,24 @@ Arquitectura Terraform con :
    I     I
 ```
 
+### EJ02 - VPC publica - VPC porivada
+
+```
+[[VPC - 10.0.0.5 - 10.0.0.0/16 - 64k hosts]] ----------------------------------------------------------------
+   I
+   I  [Subnet - 10.0.0.0/24 - 256 hosts ] - - - - - -- - - - - - - - 
+   I     I   
+   I     I   [EC2 (EIP - 5.6.7.8) ]  -----> Route -----> IG  
+   I     I
+----------------------------------------------------------------
+   I  [Subnet - 10.0.1.0/24 - 256 hosts ] - - - - - -- - - - - - - - 
+   I     I   
+   I     I   [EC2 (Private IP - 10.0.1.23) ]  -----> Route -----> NATG  
+   I     I
+
+```
+
+
 #### Entidades de Terraform : 
 
 resources :

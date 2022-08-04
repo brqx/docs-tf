@@ -1,5 +1,16 @@
+# ----------------------------------------------------------
+# Info - 2022_Jul
+# Terraform v1.2.6
+# + provider.aws v3.37.0
+# ----------------------------------------------------------
 
 data "aws_region" "current" {}
+
+locals {
+  region = data.aws_region.current.id
+  key    = "farmacia2022_rsa"
+  ami    = data.aws_ami.amzUbuntu.id
+}
 
 terraform {
   required_providers {

@@ -13,7 +13,7 @@ variable "azs" {
     pvcidr = string
   }))
 
-
+  ## VPC : 30.1.0.0/16
   default = {
     // Valores por defecto para las zonas
     // No tienen que tener el mismo orden
@@ -21,25 +21,28 @@ variable "azs" {
       name   = "public-a"
       pvname = "private-a"
       az     = "a"
-      cidr   = "10.1.1.0/24"
-      pvcidr = "10.1.10.0/24"
-    }
-    "zone_b" = {
-      name   = "public-b"
-      pvname = "private-b"
-      az     = "b"
-      cidr   = "10.1.2.0/24"
-      pvcidr = "10.1.11.0/24"
-    }
+      cidr   = "30.1.1.0/24"
+      pvcidr = "30.1.10.0/24"
+    } # end zone_a
   }
 }
 
+#    To test ... only one zone
+#    "zone_b" = {
+#      name   = "public-b"
+#      pvname = "private-b"
+#      az     = "b"
+#      cidr   = "30.1.2.0/24"
+#      pvcidr = "30.1.11.0/24"
+#    } # end zone_b
+
+
 output "valores" {
-  description = "prueba de valores de la estructura"
+  description = "Nombre Zone A"
   value       = var.azs["zone_a"].name # Devuelve public_a
 }
 
-output "hola" {
-  description = "prueba de valores de la estructura"
-  value       = "hola_001"
+output "information" {
+  description = "Despliegue del Bastion"
+  value       = "Despliegue del Bastion"
 }

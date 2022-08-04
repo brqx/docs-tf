@@ -31,3 +31,8 @@ override.tf.json
 # Ignoramos ficheros TFVARS
 
 *.tfvars
+
+# Ignoramos keys
+
+*rsa*
+ 
