@@ -9,4 +9,6 @@ Así como la conexion con los proveedores indicando la version de Aws y Terrafor
 
 Se Indican las variables comunes del proyecto
 
-Estos ficheros suelen llamarse main.md, pero creo mas adecuado llamarlo common.md
+Estos ficheros suelen llamarse main.tf, pero creo mas adecuado llamarlo common.tf
+
+

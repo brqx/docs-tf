@@ -34,6 +34,7 @@ resource "aws_security_group" "rds_postgresql" {
   vpc_id      = aws_vpc.main.id
 
   ingress {
+    description = "Puertos de acceso Postgresql"
     protocol  = "tcp"
     from_port = 5432
     to_port   = 5432
@@ -50,6 +51,7 @@ resource "aws_security_group" "rds_mysql" {
   vpc_id      = aws_vpc.main.id
 
   ingress {
+    description = "Puertos de acceso Mysql"
     protocol  = "tcp"
     from_port = 3306
     to_port   = 3306

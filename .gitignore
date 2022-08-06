@@ -1,4 +1,8 @@
 # Local .terraform directories
+# Ref : https://linuxize.com/post/gitignore-ignoring-files-in-git/
+#
+# git status --ignored --> Show ignored files
+
 **/.terraform/*
 **/.terraform.lock.hcl
 **/.terraform.lock.hcl/
