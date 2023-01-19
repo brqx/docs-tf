@@ -143,7 +143,7 @@ locals
 
 ## Brqx
 
-La arquitectura que propongo es minimizar el uso de teclado en la ejecucióni de los comandos, a su vez que se autodocumenta y se prueba
+La arquitectura que propongo es minimizar el uso de teclado en la ejecución de los comandos, a su vez que se autodocumenta y se prueba
 
 El resultado es un sistema de scripting en base a Alias y Funciones , principalmente, adaptable a cualquier herramienta, metodología o época.
 
