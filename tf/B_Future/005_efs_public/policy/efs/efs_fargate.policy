@@ -1,0 +1,43 @@
+ {
+ "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AccessThroughMountTarget",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*" 
+                }  ,
+            "Action": [
+                "elasticfilesystem:ClientRootAccess",
+                "elasticfilesystem:ClientWrite",
+                "elasticfilesystem:ClientMount"
+            ],
+            "Resource": "${fs_arn}",
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "false"
+                },
+                "Bool": {
+                    "elasticfilesystem:AccessedViaMountTarget": "true"
+                }
+            }
+        },
+        {
+            "Sid": "FargateAccess",
+            "Effect": "Allow",
+            "Principal": { "AWS": "${fargate_role}" },
+            "Action": [
+                "elasticfilesystem:ClientMount",
+                "elasticfilesystem:ClientWrite"
+            ],
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "true"
+                },
+                "StringEquals": {
+                    "elasticfilesystem:AccessPointArn" : "${efs_access_fargate}"
+                }
+            }
+        }
+    ]
+}

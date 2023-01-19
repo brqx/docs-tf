@@ -21,16 +21,6 @@ terraform {
       version = "~> 3.74"
     }
   }
-  backend "s3" {
-    # Aqui no se permiten variables
-    bucket         = "ejemplo-tfstate-brqx"
-    key            = "ejemplo-app.tfstate"
-    region         = "eu-west-1"
-    encrypt        = true
-    dynamodb_table = "ejemplo-tf-state-lock"
-    # Necesario en anteriores versiones de Terraform
-    # Usaremos variables de entorno
-  }
 }
 
 # Esto admite variables pero no funciona
@@ -42,11 +32,17 @@ provider "aws" {
 # El prefijo va a informar del proyecto relacionado con el recurso
 # Ej : raad-dev
 # Recipe App Api Devops
+# prefix : ejemplo-tf-001-dev
 locals {
   prefix = "${var.prefix}-${terraform.workspace}"
 
-  project_general = "ejemplo"
+  # Variables de la VPC
+  vpc_name      = "${local.prefix}-vpc"
+  vpc_cidr      = var.vpc_cidr
 
+  project_general = ${var.project_general}
+
+  # Usamos worksapce para el entorno
   common_tags = {
     Environment = terraform.workspace
     Project     = var.project

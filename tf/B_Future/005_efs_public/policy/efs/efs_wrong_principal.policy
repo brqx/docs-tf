@@ -1,0 +1,60 @@
+ {
+ "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AccessThroughMountTarget-Usado-Para-Comentarios",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": [
+                "elasticfilesystem:ClientRootAccess",
+                "elasticfilesystem:ClientWrite",
+                "elasticfilesystem:ClientMount"
+            ],
+            "Resource": "${aws_efs_mount_target.shared_fs[0].file_system_arn}",
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "false"
+                },
+                "Bool": {
+                    "elasticfilesystem:AccessedViaMountTarget": "true"
+                }
+            }
+        },
+        {
+            "Sid": "FargateAccess",
+            "Effect": "Allow",
+            "Principal": { "AWS": "${aws_iam_role.fargate_role.arn}" },
+            "Action": [
+                "elasticfilesystem:ClientMount",
+                "elasticfilesystem:ClientWrite"
+            ],
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "true"
+                },
+                "StringEquals": {
+                    "elasticfilesystem:AccessPointArn" : "${aws_efs_access_point.fargate.arn}"
+                }
+            }
+        },
+        {
+            "Sid": "LambdaAccess",
+            "Effect": "Allow",
+            "Principal": { "AWS": "${aws_iam_role.lambda_role.arn}" },
+            "Action": [
+                "elasticfilesystem:ClientMount",
+                "elasticfilesystem:ClientWrite"
+            ],
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "true"
+                },
+                "StringEquals": {
+                    "elasticfilesystem:AccessPointArn" : "${aws_efs_access_point.lambda.arn}"
+                }
+            }
+        }
+    ]
+}

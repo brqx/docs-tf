@@ -76,9 +76,7 @@ resource "aws_eip" "public" {
 
   vpc = true
 
-  tags = merge(
-    local.common_tags,
-    tomap({ "Name" = "${local.prefix}-${each.value.name}-EIP" })
+  tags = merge(  local.common_tags,   tomap({ "Name" = "${local.prefix}-${each.value.name}-EIP" })
   )
 }
 
