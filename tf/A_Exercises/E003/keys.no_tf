@@ -1,0 +1,24 @@
+# keys.no_tf --> desactivado
+# -----------------------------------------------------------
+# Exercise E003 .. E00N
+
+# Usaro para probar claves
+
+# Uso de claves existentes
+data "aws_key_pair" "farmacia2022_tf" {
+  key_name           = "farmacia2022_rsa"
+  include_public_key = true
+}
+
+# Import key example : 
+
+# aws ec2 import-key-pair --public-key-material file://~/.ssh/id_rsa.pub --key-name my-key
+
+
+# Esto es para usar claves externas.
+# Debemos indicar la llave publica
+
+resource "aws_key_pair" "mykey" {
+  key_name    = "mykey"
+  public_key  = file(local.key_name_public)
+}

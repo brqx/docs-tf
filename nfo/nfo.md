@@ -14,9 +14,10 @@ Entonces es necesario tener ejercicios de readaptación
 
 Son configuraciones de complejidad escalable que te permiten reentender terraform
 
-Ejercicio 01 : Montar una instancia EC2 con una VPC en una Zona
+Ejercicio 01 : Montar una instancia EC2 con una VPC en una Zona    ( Status : En Progreso )
+Ejercicio 02 : Habilitar una web desde Route 53 con dominio en la instancia generada ( Status : Pendiente )
 
-### Futuro - Arquitectura escalable 
+### B_Future  - Futuro - Arquitectura escalable 
 
 Segun vamos cogiendo practica de nuevo con terraform, podemos redefinir nuestra arquitectura escalable
 Arquitectura Terraform con : 

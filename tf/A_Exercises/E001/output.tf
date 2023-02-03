@@ -1,3 +1,7 @@
+# output.tf
+# -----------------------------------------------------------
+# Exercise E001 .. E00n
+
 # Fichero de salida
 
 # Outputs del E000
@@ -36,10 +40,6 @@ output "igw_id" {
 
 # Nuevos outputs del E001 (variante bb)
 
-# En los output tampoco permite hacer un bucle aunque no tengamos foreach definido en las estructuras
-# pero no se ve al validar sino al aplicar
-# Can't access attributes on a primitive-typed value (string)
-
 output "public_subnets_cidr" {
   value       = aws_subnet.public.cidr_block
   description = "Public subnets CIDRs list"
@@ -50,14 +50,9 @@ output "public_subnets_ids" {
   description = "Public subnets IDs list"
 }
 
-# Nuevos outputs del E001 ( variante cc)
+# Nuevos outputs del E002
 
-output "eip" {
-  value       = aws_eip.main.public_ip
-  description = "Nat Gateway ID"
-}
-
-output "natgw_id" {
-  value       = aws_nat_gateway.main.id
-  description = "Nat Gateway ID"
+output "nat_ip" {
+  value       = aws_nat_gateway.public_ip
+  description = "Public ip for Nat Gateway"
 }

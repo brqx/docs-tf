@@ -1,13 +1,11 @@
-# ----------------------------------------------------------
-# Info - 2022_Jul
-# Terraform v1.2.6
-# + provider.aws v3.37.0
-# ----------------------------------------------------------
-
+# public_subnets.tf
+# ------------------------------------------------------------
+# Exercise E001 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 # TF Entities : 
 # aws_subnet - 
 # aws_route_table - aws_route_table_association - aws_route
-# ----------------------------------------------------------
+# ------------------------------------------------------------
 
 #Subnets with bucles
 
@@ -16,7 +14,6 @@
 #####################################################
 # aws_subnet.public["zone_b"]
 resource "aws_subnet" "public" {
-  # for_each = var.azs
 
   # Generate cidr block 10.20.1.0/24  --> Args ( 10.20.0.0/16 ,  8  ,  1 )
   cidr_block              = cidrsubnet(local.vpc_cidr, local.vpc_cidr_blocks, var.azs["zone_a"].cidr)
@@ -35,7 +32,6 @@ resource "aws_route_table" "public" {
   
   vpc_id = local.vpc_id
 
-  # Sabia que faltaban las rutas
   # Lo que pertenezca al CIDR debe salir por internet gateway
   route {
     cidr_block = "0.0.0.0/0"
@@ -61,25 +57,6 @@ resource "aws_route_table_association" "public" {
 # aws_eip
 # aws_nat_gateway
 
+# Disabled due to long generation time
 
-# ----------------------------------------------------------
 
-resource "aws_eip" "main" {
-
-  vpc = true
-
-  tags = merge( local.common_tags, tomap({ "Name" = "${local.prefix}-${var.azs["zone_a"].name}-EIP" })
-  )
-}
-
-# ----------------------------------------------------------
-
-# Se define en una subnet (AZ) y se le indica que EIP usar
-resource "aws_nat_gateway" "main" {
-
-  allocation_id = aws_eip.main.id
-  subnet_id     = aws_subnet.public.id
-
-  tags = merge( local.common_tags,  tomap({ "Name" = "${local.prefix}-${var.azs["zone_a"].name}-NATGW" })
-  )
-}

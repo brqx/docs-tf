@@ -1,3 +1,7 @@
+# providers.tf
+# -----------------------------------------------------------
+# Exercise E000 .. E00n
+
 # 1_vpc - providers.tf
 
 # Set up Terraform provider version (if required)

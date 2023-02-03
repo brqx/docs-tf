@@ -1,4 +1,6 @@
 # Fichero de salida
+# -----------------------------------------------------------
+# Exercise E000
 
 output "prefix" {
   value       = local.prefix
