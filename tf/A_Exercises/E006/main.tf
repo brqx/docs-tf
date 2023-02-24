@@ -1,4 +1,8 @@
-# 1_vpc - main.tf
+# main.tf
+# ------------------------------------------------------------
+# Exercise E006 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+
 # El prefijo va cambiando
 
 # Region actual de Terraform ( creo que del perfil )

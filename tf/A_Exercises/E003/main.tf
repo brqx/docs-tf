@@ -1,6 +1,7 @@
 # main.tf
 # -----------------------------------------------------------
 # Exercise E003
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 
 # Region actual de Terraform ( creo que del perfil )
 data "aws_region" "current" {}

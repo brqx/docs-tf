@@ -1,6 +1,7 @@
 # maps.tf
-# -----------------------------------------------------------
+# ------------------------------------------------------------
 # Exercise E001 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 
 variable "azs" {
   description = "Mapa de azs disponibles para la red"
@@ -22,6 +23,6 @@ variable "azs" {
       name = "public-a"
       az   = "a"
       cidr = "1"
-    } # end zone_a  }
+    }  # end zone_a  }
   }
 }

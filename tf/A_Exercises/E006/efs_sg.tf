@@ -1,4 +1,7 @@
-# EFS Security Group
+# efs_sg.tf
+# ------------------------------------------------------------
+# Exercise E006 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 
 resource "aws_security_group" "efs_sg" {
   name        = "${local.prefix}-efs-sg"

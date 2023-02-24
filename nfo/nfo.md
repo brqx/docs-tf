@@ -60,9 +60,19 @@ Ejercicio 02 : Generar una VPC y una subnet                        ( Status : Wo
 Ejercicio 03 : Montar una instancia EC2 con una VPC en una Zona    ( Status : Working )            \
 Ejercicio 04 : Habilitar S3 para que sea accesible via rol por la instancia EC2 ( Status : Working )   \
 Ejercicio 05 : Habilitar S3FS para que sea accesible desde la EC2 ( Status : Working )                 \
-Ejercicio 06 : Habilitar EFS para que sea accesible desde la EC2 ( Status : En Progreso)               
+Ejercicio 06 : Habilitar EFS para que sea accesible desde la EC2 ( Status : Working)                   \            
+Ejercicio 07 : Habilitar EFS AP para que sea accesible desde la EC2 ( Status : Working )               
 
-Ejercicio 07 : Preparar un dominio en Route 53 Para que lanze la instancia de EC2 ( Status : Pendiente)
+Ejercicio 08 : Preparar dominio en Route 53 que lanze la instancia de EC2 Publica ( Status : Working)              \
+Ejercicio 09 : Preparar dominio Route 53 que lanze la instancia de EC2 Privada - Requiere LB  ( Status : Pending ) \ 
+Ejercicio 10 : Habilitar SSL en Route 53. Comprobacion de registros ( Status : Pending )
+
+Ejercicio 11 : Redirecion de Route53 a un balanceador y del mismo a las EC2 Publica ( Status : Pending )
+Ejercicio 12 : Bloqueo de acceso a las instancias. Solo cargan desde el balanceador ( Status : Pending )
+Ejercicio 13 : Habilitar SSL en los ALB para ser invocados por Route 53 ( Status : Pending )
+Ejercicio 14 : Regla en balanceador. Si SSL o mobile Instancia1 sino Instancias2 ( Status : Pending )
+Ejercicio 15 : Probar balanceador de Red : Network 
+
 
 ### B_Future  - Futuro - Arquitectura escalable 
 
@@ -84,4 +94,5 @@ Realmente lo que quiero llegar a conseguir es :
 ## Referencias
 
 https://ao.ms/solved-error-acquiring-the-state-lock-in-terraform/
+
 

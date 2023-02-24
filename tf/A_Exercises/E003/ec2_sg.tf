@@ -1,9 +1,10 @@
 # ec2_sg.tf
 # -----------------------------------------------------------
 # Exercise E003 .. E00N
-
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 # TF Entities : 
 # aws_security_group
+# ------------------------------------------------------------
 
 
 resource "aws_security_group" "allow_ssh_and_http_sg" {
@@ -17,8 +18,15 @@ resource "aws_security_group" "allow_ssh_and_http_sg" {
     from_port = 60022
     to_port   = 60022
     protocol  = "tcp"
-    # Pendiente para que solo llegu desde el ALB o R53
-    #security_groups = [aws_security_group.allow_ssh_from_alb.id]
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Vamos a intentar que acepte pings
+  # Assuming you want to allow a ping (Echo) to your server you can use the following terraform configuration
+  ingress {
+    protocol  = "icmp"
+    from_port = 8
+    to_port = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -27,10 +35,8 @@ resource "aws_security_group" "allow_ssh_and_http_sg" {
     to_port   = 80
     protocol  = "tcp"
     # Pendiente para que solo llegu desde el ALB o R53
-    #security_groups = [aws_security_group.allow_ssh_from_alb.id]
     cidr_blocks = ["0.0.0.0/0"]
   }
-
 
   # Permitimos que salga todo el trafico
   egress {

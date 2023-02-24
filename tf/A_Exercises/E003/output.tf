@@ -1,6 +1,8 @@
-# Fichero de salida E002 - output
+# output.tf
+# Fichero de salida E003 - output
 # –-------------------------------------
 # Outputs del E000
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 
 output "prefix" {
   value       = local.prefix

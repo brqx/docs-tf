@@ -1,0 +1,14 @@
+# Create Certificate
+resource "aws_acm_certificate" "linux-alb-certificate" {
+  domain_name       = "${var.dns_hostname}.${var.public_dns_name}"
+  validation_method = "DNS"
+  
+  tags = {
+    Name        = "${lower(var.app_name)}-${var.app_environment}-linux-alb-certificate"
+    Environment = var.app_environment
+  }
+}
+
+# Refs:
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation
+

@@ -1,5 +1,7 @@
-# Fichero de salida E003 - output
-#-------------------------------------
+# output.tf
+# ------------------------------------------------------------
+# Exercise E005 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 
 # Outputs del E000
 
@@ -47,11 +49,4 @@ output "instance_az" {
 output "instance_ip" {
   value       = aws_instance.amazon_linux_2.public_ip
   description = "IP publica de la instancia EC2"
-}
-
-# Nuevos outputs del E003
-
-output "s3_bucket" {
-  value       = data.aws_s3_bucket.mybucket.id
-  description = "Nombre del bucket S3 a usar"
 }

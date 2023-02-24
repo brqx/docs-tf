@@ -1,3 +1,7 @@
+# s3_full.tf
+# ------------------------------------------------------------
+# Exercise E004 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 # Run S3 commands from ec2
 #
 # aws sts get-caller-identity --> check role is running correctly
@@ -8,6 +12,8 @@
 data "aws_s3_bucket" "mybucket" {
   bucket = local.s3_bucket_name
 }
+
+# ------------------------------------------------------------
 
 # Template file for IAM Policy
 
@@ -22,11 +28,15 @@ data "template_file" "s3_read_access_policy_template" {
 
 }
 
+# ------------------------------------------------------------
+
 # Template file for IAM Role
 
 data "template_file" "ec2_assume_role_template" {
   template = file("${local.tf_shell_path}roles/assume_role_ec2.role")
 }
+
+# ------------------------------------------------------------
 
 # IAM Policy
 
@@ -37,6 +47,8 @@ resource "aws_iam_policy" "bucket_policy" {
   policy = data.template_file.s3_read_access_policy_template.rendered
 }
 
+# ------------------------------------------------------------
+
 # IAM Role
 
 resource "aws_iam_role" "ec2_to_s3_access_role" {
@@ -45,12 +57,16 @@ resource "aws_iam_role" "ec2_to_s3_access_role" {
   
 }
 
+# ------------------------------------------------------------
+
 # Iam Role - Policy Attachment
 
 resource "aws_iam_role_policy_attachment" "ec2_s3_attachment" {
   role       = aws_iam_role.ec2_to_s3_access_role.name
   policy_arn = aws_iam_policy.bucket_policy.arn
 }
+
+# ------------------------------------------------------------
 
 # Iam Instance Profile
 

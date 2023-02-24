@@ -1,6 +1,7 @@
 # output.tf
-# -----------------------------------------------------------
+# ----------------------------------------------------------------
 # Exercise E001 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 
 # Fichero de salida
 
@@ -50,9 +51,3 @@ output "public_subnets_ids" {
   description = "Public subnets IDs list"
 }
 
-# Nuevos outputs del E002
-
-output "nat_ip" {
-  value       = aws_nat_gateway.public_ip
-  description = "Public ip for Nat Gateway"
-}

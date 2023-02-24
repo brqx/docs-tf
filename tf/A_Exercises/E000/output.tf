@@ -1,6 +1,7 @@
-# Fichero de salida
+# output.tf
 # -----------------------------------------------------------
-# Exercise E000
+# Exercise E000 .. E00N
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 
 output "prefix" {
   value       = local.prefix

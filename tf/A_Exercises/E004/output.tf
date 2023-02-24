@@ -1,5 +1,5 @@
 # output.tf
-# Exercise E003
+# Exercise E004
 #-------------------------------------
 
 # Outputs del E000
@@ -50,7 +50,7 @@ output "instance_ip" {
   description = "IP publica de la instancia EC2"
 }
 
-# Nuevos outputs del E003
+# Nuevos outputs del E004
 
 output "s3_bucket" {
   value       = data.aws_s3_bucket.mybucket.id

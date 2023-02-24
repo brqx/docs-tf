@@ -1,5 +1,5 @@
 # Method to render json policy | shell script
-# E003 Exercise
+# E006 Exercise
 
 # 
 
@@ -13,8 +13,11 @@ data "template_file" "ec2_shell_template" {
 
   vars = {
     ssh_secret_port = "${local.ssh_secret_port}"
-    FS_AP_ID = "${aws_efs_access_point.drupal.id}"
     REGION = "${data.aws_region.current.name}"
+    FS_ID = "${var.efs_id}"
+    FOLDER = "${var.efs_folder}"
+    FILE = "${var.efs_file}"
+
   }
 }
 

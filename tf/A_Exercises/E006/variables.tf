@@ -1,6 +1,6 @@
-# 1_vpc - variables.tf
+# variables.tf
 # -----------------------------------------------------------
-# Exercise E000
+# Exercise E006
 
 variable "prefix" {
   default     = "efs-terraform"
@@ -54,8 +54,12 @@ variable "efs_id" {
 
 variable "efs_folder" {
   description = "Folder donde montar el Sistema EFS o el Punto de Acceso"
-  default     = "fs-05b99badf944e77c6"
+  default     = "/drupal"
 }
 
+variable "efs_file" {
+  description = "Fichero que se recupera desde EFS Punto de Acceso"
+  default     = "example.txt"
+}
 
 # -----------------------------------------------------------

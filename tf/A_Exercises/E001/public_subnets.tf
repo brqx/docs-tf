@@ -24,6 +24,7 @@ resource "aws_subnet" "public" {
   tags = merge( local.common_tags, tomap({ "Name" = "${local.prefix}-${var.azs["zone_a"].name}" })  )
 }
 
+
 # ----------------------------------------------------------
 
 # aws_route_table.public["zone_b"]
@@ -49,7 +50,6 @@ resource "aws_route_table_association" "public" {
   subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.public.id
 }
-
 # ----------------------------------------------------------
 
 # Exercise E001_cc - New Entities

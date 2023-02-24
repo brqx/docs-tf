@@ -19,6 +19,8 @@ resource "aws_vpc" "main" {
   )
 }
 
+# ----------------------------------------------------------
+
 # Internet Gateway
 
 resource "aws_internet_gateway" "main" {
