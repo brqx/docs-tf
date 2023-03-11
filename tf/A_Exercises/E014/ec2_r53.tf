@@ -1,3 +1,11 @@
+# ec2_r53.tf
+# ------------------------------------------------------------
+# Exercise E011 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# TF Entities : 
+# aws_instance - 
+# 
+# ------------------------------------------------------------
 
 # Get User data
 # http://169.254.169.254/latest/user-data
@@ -23,6 +31,8 @@ resource "aws_instance" "amazon_linux_2" {
 
   tags = merge(tomap({ "Name" = "${local.prefix}-amazon-linux-2" }), local.common_tags)
 }
+
+# ------------------------------------------------------------
 
 resource "aws_instance" "amazon_linux_1" {
   ami           = data.aws_ami.amazon_linux_2_latest.id

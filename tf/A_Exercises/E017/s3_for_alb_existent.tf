@@ -1,0 +1,57 @@
+# s3_for_alb_existent.tf
+# ------------------------------------------------------------
+# Exercise E017 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# Data TF Entities : 
+# aws_s3_bucket - 
+# aws_s3_bucket_acl
+# aws_iam_policy_document
+# aws_s3_bucket_policy
+# ------------------------------------------------------------
+
+
+# aws sts get-caller-identity --> check role is running correctly
+# aws s3 cp <Fully Qualified Local filename> s3://<S3BucketName>
+
+# A S3 bucket can be mounted in a AWS instance as a file system known as S3fs
+# ACCOUNT_ID = data.aws_caller_identity.current.account_id
+
+
+data "aws_s3_bucket" "existent_bucket" {
+  bucket = var.s3_existent_bucket_name
+}
+
+
+# ------------------------------------------------------------
+
+data "aws_iam_policy_document" "existent_allow_elb_logging" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "AWS"
+      identifiers = [data.aws_elb_service_account.main.arn]
+    }
+
+    # Ajuste en elos recursos
+    actions   = ["s3:PutObject"]
+    resources = ["${data.aws_s3_bucket.existent_bucket.arn}/*"]
+  }
+}
+# putting S3 policy: MalformedPolicy: Policy has invalid resource
+# resources = ["${var.s3_existent_bucket_name}/*"]
+
+
+# ------------------------------------------------------------
+
+# Relaciona el Bucket con la politica
+
+resource "aws_s3_bucket_policy" "existent_allow_elb_logging" {
+  bucket = data.aws_s3_bucket.existent_bucket.id
+  policy = data.aws_iam_policy_document.existent_allow_elb_logging.json
+}
+
+# Refs: 
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/elb_service_account.html
+# https://stackoverflow.com/questions/48782856/aws-nlb-in-public-subnets-with-ec2-in-private-subnets --> NLB
+# https://github.com/tmknom/terraform-aws-s3-lb-log/blob/2.0.0/main.tf --> NLB - ALB - Logs S3

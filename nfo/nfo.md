@@ -65,13 +65,21 @@ Ejercicio 07 : Habilitar EFS AP para que sea accesible desde la EC2 ( Status : W
 
 Ejercicio 08 : Preparar dominio en Route 53 que lanze la instancia de EC2 Publica ( Status : Working)              \
 Ejercicio 09 : Preparar dominio Route 53 que lanze la instancia de EC2 Privada - Requiere LB  ( Status : Pending ) \ 
-Ejercicio 10 : Habilitar SSL en Route 53. Comprobacion de registros ( Status : Pending )
+Ejercicio 10 : Habilitar SSL en Route 53. Comprobacion de registros ( Status : Working )
 
-Ejercicio 11 : Redirecion de Route53 a un balanceador y del mismo a las EC2 Publica ( Status : Pending )
-Ejercicio 12 : Bloqueo de acceso a las instancias. Solo cargan desde el balanceador ( Status : Pending )
-Ejercicio 13 : Habilitar SSL en los ALB para ser invocados por Route 53 ( Status : Pending )
-Ejercicio 14 : Regla en balanceador. Si SSL o mobile Instancia1 sino Instancias2 ( Status : Pending )
-Ejercicio 15 : Probar balanceador de Red : Network 
+Ejercicio 11 : Redirecion de Route53 a un balanceador y del mismo a las EC2 Publica ( Status : Working )          \
+Ejercicio 12 : Bloqueo de acceso a las instancias. Solo cargan desde el balanceador ( Status : Working )          \
+Ejercicio 13 : Habilitar SSL en los ALB para ser invocados por Route 53 ( Status : Working )                      \
+Ejercicio 14 : Habilitar logs para el balanceador.             \
+Ejercicio 15 : Reglas balanceador. Deteccion Dispositivo, Protocolo, Uri o Host ( Status : Working )         \
+Ejercicio 16 : Redireccion de HTTP a HTTPS para movil e carga de imagen de S3 ( Status : Working )    \
+Ejercicio 17 : Probar balanceador de Red : NLB ( Status : Pending )  \
+Ejercicio 18 : Integrar CDN - Cloudfront en Arquitectura del ALB  ( Status : Working )
+Ejercicio 19 : Validacion de Cname/Alias SSL con balanceadores ( Status : Working )
+Ejercicio 20 : Integrar CDN - Cloudfront en Arquitectura del ALB con Www - subominios  ( Status : Working )
+Ejercicio 21 : Autoscaling en ALB ( Status : Working )
+Ejercicio 22 : Autoscaling en ALB con notificacion SNS y composicion de alarmas ( Status : Working )
+Ejercicio 23 : Integracion de SQS en la respuesta web
 
 
 ### B_Future  - Futuro - Arquitectura escalable 

@@ -1,3 +1,14 @@
+# ec2_tf.tf
+# ------------------------------------------------------------
+# Exercise E011 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# TF Data : 
+# template_file - 
+# 
+# ------------------------------------------------------------
+
+# ------------------------------------------------------------
+
 # Method to render json policy | shell script
 # E014 Exercise
 
@@ -11,6 +22,7 @@ data "template_file" "ec2_shell_template" {
   vars = {
     ssh_secret_port = "${local.ssh_secret_port}"
     BUCKET = "${var.s3_bucket_name}"
+    EXISTENT_BUCKET = "${var.s3_existent_bucket_name}"
     FOLDER = "${var.s3_folder}"
     FILE = "${var.s3_file}"
     EC2_ROLE= "${aws_iam_role.ec2_to_s3_access_role.name}"

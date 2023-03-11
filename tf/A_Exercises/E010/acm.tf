@@ -1,3 +1,13 @@
+# acm.tf
+# ------------------------------------------------------------
+# Exercise E010 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# TF Entities : 
+# aws_acm_certificate
+# aws_route53_record
+# aws_acm_certificate_validation
+# ------------------------------------------------------------
+
 # Create Certificate
 resource "aws_acm_certificate" "route53_domain_certificate" {
   domain_name       = "${var.domain_name}"

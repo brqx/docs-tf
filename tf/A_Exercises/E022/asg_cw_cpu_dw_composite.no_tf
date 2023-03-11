@@ -1,0 +1,91 @@
+# alb_asg_policy_cpu.tf
+# ------------------------------------------------------------
+# Exercise E021 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# TF Entities : 
+# aws_cloudwatch_metric_alarm
+# aws_cloudwatch_composite_alarm
+# ------------------------------------------------------------
+
+data "template_file" "alarm_composite" {
+  template = file("${local.tf_shell_path}composite/e001/alarm_composite.x")
+
+  # Son variables que se interpolan cuando se interpreta el fichero
+
+  vars = {
+    ALARM_01 = "${aws_cloudwatch_metric_alarm.alarm_dw_a.alarm_name}"
+    ALARM_02 = "${aws_cloudwatch_metric_alarm.alarm_dw_b.alarm_name}"
+  }
+}
+
+
+# Composicion de alarmas. La solucion para entender todo esto
+resource "aws_cloudwatch_composite_alarm" "alarm_composite_down" {
+  alarm_description = "Composicion de alarmas para gestionar la instancia"
+  alarm_name        = "alarm-composite-down"
+
+#  ok_actions    = aws_sns_topic.example.arn
+
+  alarm_rule = data.template_file.alarm_composite.rendered
+
+  # Error: failed creating CloudWatch Composite Alarm (alarm-composite-down): 
+  # ValidationError: [Auto Scaling] action type(s) not supported for Composite Alarms
+
+  alarm_actions = [  "${aws_sns_topic.prueba.arn}"  ]
+
+  #  "${aws_autoscaling_policy.dw.arn}" 
+
+  depends_on = [     aws_cloudwatch_metric_alarm.alarm_dw_a , aws_cloudwatch_metric_alarm.alarm_dw_b   ]
+
+}
+
+# ------------------------------------------------------------
+
+# CPUUtilization < 20 para 2 puntos de datos dentro de 2 minutos
+
+# when we want to create custom alerts with mutliple metrics we can use math expressions
+
+resource "aws_cloudwatch_metric_alarm" "alarm_dw_a" {
+  alarm_name = "web_cpu_alarm_down_a"
+
+  comparison_operator = "LessThanThreshold"
+ 
+  evaluation_periods = "2"
+
+# Defining the metric_name according to which scaling will happen (based on CPU) 
+  metric_name = "CPUUtilization"
+
+  namespace = "AWS/EC2"
+
+  period = "60"
+  statistic = "Average"
+  threshold = "20"
+
+  dimensions = {   AutoScalingGroupName = "${aws_autoscaling_group.main.name}"   }
+}
+
+# ------------------------------------------------------------
+
+
+resource "aws_cloudwatch_metric_alarm" "alarm_dw_b" {
+  alarm_name = "web_cpu_alarm_down_b"
+
+  comparison_operator = "GreaterThanThreshold"
+
+  metric_name = "CPUUtilization"
+
+  namespace = "AWS/EC2"
+
+  statistic = "Average"
+ 
+  evaluation_periods = "2"
+  period = "60"
+  threshold = "5"
+
+  dimensions = {   AutoScalingGroupName = "${aws_autoscaling_group.main.name}"   }
+}
+
+
+# Refs : 
+# https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Composite_Alarm.html
+

@@ -1,4 +1,4 @@
-# 1_vpc - variables_s3.tf
+# s3_variables_s3.tf
 # -----------------------------------------------------------
 # Exercise E005
 
@@ -7,6 +7,11 @@
 
 variable "s3_bucket_name" {
   description = "Nombre del Bucket S3 a usar"
+  default     = "brqx-my-alb-tf-test-bucket-2023"
+}
+
+variable "s3_existent_bucket_name" {
+  description = "Nombre del Bucket S3 a usar"
   default     = "fz3"
 }
 
@@ -14,6 +19,11 @@ variable "s3_bucket_name" {
 variable "s3_sid_name" {
   description = "Nombre del SID para el Bucket S3 a usar"
   default     = "fz3sid"
+}
+
+variable "s3_existent_sid_name" {
+  description = "Nombre del SID para el Bucket S3 a usar"
+  default     = "existentsid"
 }
 
 # Folder a recuperar

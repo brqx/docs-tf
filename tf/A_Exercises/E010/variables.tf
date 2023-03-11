@@ -1,6 +1,10 @@
-# 1_vpc - variables.tf
-# -----------------------------------------------------------
-# Exercise E000
+# variables.tf
+# ------------------------------------------------------------
+# Exercise E010 .. E00n
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# New Variables : 
+# domain_name
+# ------------------------------------------------------------
 
 variable "prefix" {
   default     = "efs-terraform"
@@ -50,6 +54,11 @@ variable "uid_ec2_user" {
 variable "domain_name" {
   description = "Nombre del dominio - Zona a usar"
   default     = "zqx.link"
+}
+
+variable "www_domain_name" {
+  description = "Nombre del dominio - Zona a usar"
+  default     = "www.zqx.link"
 }
 
 

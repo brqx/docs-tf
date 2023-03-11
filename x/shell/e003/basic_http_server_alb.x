@@ -13,5 +13,5 @@ yum update -y
 yum install -y httpd
 systemctl start httpd.service
 systemctl enable httpd.service
-echo "Hi Friend of brqx , I am $(hostname -f) hosted by Terraform" >  /var/www/html/index.html
-echo "For ALB --> My IP is : $(curl http://169.254.169.254/latest/meta-data/local-ipv4) " >>  /var/www/html/index.html
+echo "Hi Friend of brqx , I am $(hostname -f) hosted by Terraform </BR>" >  /var/www/html/index.html
+echo "For ALB ONE Desktop --> My IP is : $(curl http://169.254.169.254/latest/meta-data/local-ipv4) " >>  /var/www/html/index.html
