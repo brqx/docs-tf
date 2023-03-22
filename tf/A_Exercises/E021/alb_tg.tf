@@ -1,6 +1,6 @@
 # alb.tf
 # ------------------------------------------------------------
-# Link Exercise E011 .. E00n
+# Link Exercise E021 .. E00n
 # --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 # TF Entities : 
 # aws_lb_target_group - 
@@ -10,12 +10,12 @@
 # ------------------------------------------------------------
 
 # Create a Load Balancer Target Group for HTTP
-resource "aws_lb_target_group" "main" {  
+resource "aws_lb_target_group" "main" {
   name     = "alb-tg-http-main"
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.main.id
-  
+
   deregistration_delay = 60
   stickiness {
     type = "lb_cookie"

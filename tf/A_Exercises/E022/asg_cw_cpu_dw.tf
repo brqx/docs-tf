@@ -20,7 +20,7 @@
 
 resource "aws_cloudwatch_metric_alarm" "alarm_dw_query" {
   alarm_name = "web_cpu_alarm_down_a"
- 
+
   comparison_operator = "LessThanThreshold"
 
   evaluation_periods = "2"
@@ -35,12 +35,12 @@ resource "aws_cloudwatch_metric_alarm" "alarm_dw_query" {
 
   statistic = "Average"
 
-  alarm_description = "Comprueba si se ha rebajado el 70% y superado el 3% de la CPU"  
-  
-  alarm_actions = [ "${aws_autoscaling_policy.dw.arn}"]
+  alarm_description = "Comprueba si se ha rebajado el 70% y superado el 3% de la CPU"
 
-      # Son como filtros
-  dimensions = {   AutoScalingGroupName = "${aws_autoscaling_group.main.name}"   }
+  alarm_actions = ["${aws_autoscaling_policy.dw.arn}"]
+
+  # Son como filtros
+  dimensions = { AutoScalingGroupName = "${aws_autoscaling_group.main.name}" }
 
 }
 

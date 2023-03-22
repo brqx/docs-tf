@@ -1,6 +1,12 @@
-# maps.tf
+# maps_zones.tf
 # -----------------------------------------------------------
 # Exercise E001 .. E00n
+# ------------------------------------------------------------
+# Nota : 
+# - Mapa con dos zonas en distintas AZ
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# ------------------------------------------------------------
+
 
 variable "azs" {
   description = "Mapa de azs disponibles para la red"
@@ -22,7 +28,7 @@ variable "azs" {
       name = "public-a"
       az   = "a"
       cidr = "1"
-    } , # end zone_a  }
+    }, # end zone_a  }
     "zone_b" = {
       name = "public-b"
       az   = "b"

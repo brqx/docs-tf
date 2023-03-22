@@ -1,13 +1,10 @@
 # main.tf
 # ------------------------------------------------------------
-# Exercise E022 .. E00n
+# Exercise E021 .. E00n
 # --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
-# TF Entities : 
-# aws_lb_listener
 # 
 # ------------------------------------------------------------
 
-# El prefijo va cambiando
 
 # Region actual de Terraform ( creo que del perfil )
 data "aws_region" "current" {}
@@ -30,14 +27,14 @@ locals {
 
   aws_region = data.aws_region.current.name
 
+  vpc_id          = aws_vpc.main.id
   vpc_name        = "${local.prefix}-vpc"
   vpc_cidr        = var.vpc_cidr
   vpc_cidr_blocks = var.vpc_cidr_blocks
 
-  # Preparamos las referencias para cuando se cargue la zona
+  igw_id          = aws_internet_gateway.main.id
 
-  vpc_id = aws_vpc.main.id
-  igw_id = aws_internet_gateway.main.id
+  # Preparamos las referencias para cuando se cargue la zona
 
   # Es el nombre de la clave - no su ruta
   key_name = "farmacia2022_rsa"
@@ -47,6 +44,7 @@ locals {
   ec2_instance_type = "t3.micro"
 
   ssh_secret_port   = var.ssh_secret_port
+
 
   # Variables Para S3
   

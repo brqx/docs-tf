@@ -6,6 +6,11 @@
 # aws_security_group - 
 # aws_security_group_rule
 # ------------------------------------------------------------
+# Nota : 
+# - Grupo de Seguridad para el ALB
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# ------------------------------------------------------------
+
 
 # Regla de entrada WEB --> LB
 resource "aws_security_group_rule" "web80_to_lb" {
@@ -35,10 +40,10 @@ resource "aws_security_group_rule" "web443_to_lb" {
 
 # Regla de salida
 resource "aws_security_group_rule" "lb_egress" {
-  type              = "egress"
-  from_port         = 0
-  to_port           = 0
-  protocol          = "-1"
+  type      = "egress"
+  from_port = 0
+  to_port   = 0
+  protocol  = "-1"
   # La salida debe ser a Fargate
   # source_security_group_id = local.fargate_sg  
   cidr_blocks       = ["0.0.0.0/0"]
@@ -50,9 +55,9 @@ resource "aws_security_group_rule" "lb_egress" {
 # ----------------------------------------------------------
 
 resource "aws_security_group" "test_alb_sg" {
-  name = "test_alb"
+  name        = "test_alb"
   description = "ALB Security Group"
-  vpc_id = aws_vpc.main.id
+  vpc_id      = aws_vpc.main.id
 
   tags = merge(tomap({ "Name" = "${local.prefix}-amazon-alb-sg" }), local.common_tags)
 

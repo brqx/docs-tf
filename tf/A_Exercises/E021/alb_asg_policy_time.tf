@@ -1,10 +1,15 @@
-# alb_lc.tf
+# alb_asg_policy_time.tf
 # ------------------------------------------------------------
-# Exercise E012 .. E00n
+# Exercise E021 .. E00n
 # --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 # TF Entities : 
-# aws_launch_configuration
+# aws_autoscaling_schedule
 # ------------------------------------------------------------
+# Nota : 
+# - Ejemplo de politica que escala con el tiempo
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# ------------------------------------------------------------
+
 
 # Get User data
 # http://169.254.169.254/latest/user-data
@@ -27,7 +32,6 @@ resource "aws_autoscaling_schedule" "mygroup_schedule" {
 
   autoscaling_group_name = aws_autoscaling_group.main.name
 }
-
 
 # Refs : 
 # https://pet2cattle.com/2022/05/aws-network-load-balancer-autoscaling-group-terraform

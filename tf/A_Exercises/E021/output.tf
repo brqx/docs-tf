@@ -1,10 +1,9 @@
 # output.tf
 #-------------------------------------# ------------------------------------------------------------
-# Exercise E014 .. E00n
+# Exercise E021 .. E00n
 # --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 # New Output : 
 # alb_url
-# 
 # ------------------------------------------------------------
 
 # Outputs del E000
@@ -58,8 +57,15 @@ output "alb_url" {
   description = "Region del EFS"
 }
 
+# De LC se exportan id y name
+output "lc_id" {
+  value       = aws_launch_configuration.main.id
+  description = "Launch Configuration ID"
+}
+
 
 output "time" {
   value       = timestamp()
   description = "Timestamp"
 }
+

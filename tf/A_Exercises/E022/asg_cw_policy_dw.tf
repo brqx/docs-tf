@@ -18,20 +18,20 @@
 # date "+%Y-%m-%dT%H:%M:%SZ"
 
 resource "aws_autoscaling_policy" "dw" {
-  name                   = "autoscale_policy_dw_ec2"
+  name = "autoscale_policy_dw_ec2"
 
   policy_type = "TargetTrackingScaling"
 
-# policy_type : (opcional) el tipo de política, ya sea 
-# "SimpleScaling", "StepScaling" o "TargetTrackingScaling". 
-# Si no se proporciona este valor, AWS utilizará de forma predeterminada "SimpleScaling".
+  # policy_type : (opcional) el tipo de política, ya sea 
+  # "SimpleScaling", "StepScaling" o "TargetTrackingScaling". 
+  # Si no se proporciona este valor, AWS utilizará de forma predeterminada "SimpleScaling".
 
-  scaling_adjustment     = -1
+  scaling_adjustment = -1
 
-# especifica si el ajuste es un número absoluto o un porcentaje de la capacidad actual. 
-# Los valores válidos son ChangeInCapacity , ExactCapacity y PercentChangeInCapacity .
-  
-  adjustment_type        = "ChangeInCapacity"
+  # especifica si el ajuste es un número absoluto o un porcentaje de la capacidad actual. 
+  # Los valores válidos son ChangeInCapacity , ExactCapacity y PercentChangeInCapacity .
+
+  adjustment_type = "ChangeInCapacity"
 
   # Para desescalar mas rapido ... 30 segundos  
   cooldown               = 30

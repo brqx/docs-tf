@@ -1,4 +1,4 @@
-# alb_asg_policy_cpu.tf
+# alb_cw_cpu_up.tf
 # ------------------------------------------------------------
 # Exercise E021 .. E00n
 # --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
@@ -12,10 +12,11 @@
 
 # Stress
 # sudo stress --cpu 4 -v --timeout 3000s
+# sudo stress --cpu 1 -v --timeout 2000s --> Ideal para t3micro
 
 # Creating the autoscaling policy of the autoscaling group
 resource "aws_autoscaling_policy" "up" {
-  name                   = "autoscalegroup_policy"
+  name                   = "policy_scale_up"
 
 # policy_type : tipo de política :  
 # "SimpleScaling"
@@ -45,7 +46,6 @@ resource "aws_autoscaling_policy" "up" {
 # ------------------------------------------------------------
 
 # CPUUtilization > 70 para 2 puntos de datos dentro de 2 minutos
-#	CPUUtilization > 70 para 5 puntos de datos dentro de 5 minutos
 
 resource "aws_cloudwatch_metric_alarm" "metric_up" {
 # defining the name of AWS cloudwatch alarm
@@ -53,7 +53,7 @@ resource "aws_cloudwatch_metric_alarm" "metric_up" {
   comparison_operator = "GreaterThanThreshold"
   
   # Define el periodo sobre el que se actua ( 5 puntos de datos dentro de 5 minutos )
-  evaluation_periods = "5"
+  evaluation_periods = "2"
 # Defining the metric_name according to which scaling will happen (based on CPU) 
   metric_name = "CPUUtilization"
 # The namespace for the alarm's associated metric
@@ -65,17 +65,15 @@ resource "aws_cloudwatch_metric_alarm" "metric_up" {
   period = "60"
 
   statistic = "Average"
-# CPU Utilization threshold is set to 70 percent
-  threshold = "70"
-
+# CPU Utilization threshold is set to XX (70 - 35) percent
+  threshold = "${local.threshold}"
+  
   alarm_description = "Comprueba si se ha superado el 70% de la CPU"  
   
   # Necesitamos una politica de autoscaling
   alarm_actions = [  "${aws_autoscaling_policy.up.arn}"     ]
   dimensions = {   AutoScalingGroupName = "${aws_autoscaling_group.main.name}"   }
 }
-
-
 
 
 # Refs : 

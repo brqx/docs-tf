@@ -1,18 +1,21 @@
-# alb_ls.tf
+# alb_ls_ssl.tf
 # ------------------------------------------------------------
 # Link Exercise E013 .. E00n
 # --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 # TF Entities : 
 # aws_lb_listener
-# aws_lb_listener_rule
-# 
 # ------------------------------------------------------------
+# Nota : 
+# - Listener HTTPS
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# ------------------------------------------------------------
+
 
 # Create Application Load Balancer Listener for HTTPS
 resource "aws_alb_listener" "linux-alb-listener-https" {
   depends_on = [
-    aws_acm_certificate.route53_domain_certificate ,
-    aws_route53_record.route53_domain_validation ,
+    aws_acm_certificate.route53_domain_certificate,
+    aws_route53_record.route53_domain_validation,
     aws_acm_certificate_validation.domain_certificate_validation
   ]
 
@@ -23,7 +26,7 @@ resource "aws_alb_listener" "linux-alb-listener-https" {
 
   default_action {
     target_group_arn = aws_lb_target_group.main.arn
-    type = "forward"
+    type             = "forward"
   }
 }
 

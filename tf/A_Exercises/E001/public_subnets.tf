@@ -21,7 +21,7 @@ resource "aws_subnet" "public" {
   vpc_id                  = local.vpc_id
   availability_zone       = "${data.aws_region.current.name}${var.azs["zone_a"].az}"
 
-  tags = merge( local.common_tags, tomap({ "Name" = "${local.prefix}-${var.azs["zone_a"].name}" })  )
+  tags = merge(local.common_tags, tomap({ "Name" = "${local.prefix}-${var.azs["zone_a"].name}" }))
 }
 
 
@@ -30,7 +30,7 @@ resource "aws_subnet" "public" {
 # aws_route_table.public["zone_b"]
 # No decimos ninguna ruta
 resource "aws_route_table" "public" {
-  
+
   vpc_id = local.vpc_id
 
   # Lo que pertenezca al CIDR debe salir por internet gateway
@@ -38,8 +38,8 @@ resource "aws_route_table" "public" {
     cidr_block = "0.0.0.0/0"
     gateway_id = local.igw_id
   }
-  
-  tags = merge(  local.common_tags,  tomap({ "Name" = "${local.prefix}-${var.azs["zone_a"].az}-routetable" })   )
+
+  tags = merge(local.common_tags, tomap({ "Name" = "${local.prefix}-${var.azs["zone_a"].az}-routetable" }))
 }
 
 # ----------------------------------------------------------

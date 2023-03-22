@@ -1,0 +1,6 @@
+{
+  "id": {"S": "a6420"},
+  "nombre": {"S": "Pedrin"},
+  "edad": {"N": "25"},
+  "apuestas": {"N": "34"}
+}

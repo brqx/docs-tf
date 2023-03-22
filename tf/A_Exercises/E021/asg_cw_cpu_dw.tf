@@ -1,4 +1,4 @@
-# alb_asg_policy_cpu.tf
+# asg_cw_cpu_dw.tf
 # ------------------------------------------------------------
 # Exercise E021 .. E00n
 # --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
@@ -6,7 +6,6 @@
 # aws_cloudwatch_metric_alarm
 # aws_autoscaling_policy
 # ------------------------------------------------------------
-
 
 # Get User data
 # http://169.254.169.254/latest/user-data
@@ -17,8 +16,10 @@
 # Date Starttime
 # date "+%Y-%m-%dT%H:%M:%SZ"
 
+# EL nombre de las politicas es muy importante y es lo que se usa cuando se actua con ellas
+
 resource "aws_autoscaling_policy" "dw" {
-  name                   = "autoscalegroup_policy"
+  name                   = "policy_scale_down"
 
 # policy_type : (opcional) el tipo de política, ya sea 
 # "SimpleScaling", "StepScaling" o "TargetTrackingScaling". 
@@ -56,6 +57,7 @@ resource "aws_cloudwatch_metric_alarm" "alarm_dw" {
   evaluation_periods = "2"
 
 # Defining the metric_name according to which scaling will happen (based on CPU) 
+# Parece que es la media de todas las instancias
   metric_name = "CPUUtilization"
 
   namespace = "AWS/EC2"
@@ -70,15 +72,15 @@ resource "aws_cloudwatch_metric_alarm" "alarm_dw" {
  # Se admite cualquiera de los siguientes: SampleCount , Average , Sum , Minimum , Maximum
   statistic = "Average"
 # CPU Utilization threshold is set to 10 percent
-  threshold = "20"
+  threshold = "${local.threshold_down}"
   
+  alarm_description = "Comprueba si estamos por debajo del umbral del 70% de la CPU"  
+
   # Necesitamos una politica de autoscaling
   alarm_actions = [  "${aws_autoscaling_policy.dw.arn}"     ]
 
   dimensions = {   AutoScalingGroupName = "${aws_autoscaling_group.main.name}"   }
 }
-
-
 
 
 # Refs : 

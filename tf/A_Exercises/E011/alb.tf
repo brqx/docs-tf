@@ -18,18 +18,18 @@
 #│       status code: 400, request id: d9e26a54-7834-4934-b459-fa72e55314b7
 
 resource "aws_lb" "test_alb" {
-  name               = "test-alb"
+  name = "test-alb"
   # Debe ser external, puesto que internal es que no sale fuera
   internal           = false
   load_balancer_type = "application"
 
-  security_groups    = [ aws_security_group.test_alb_sg.id ]
-  subnets            = [ aws_subnet.public.id , aws_subnet.public_b.id ]
+  security_groups = [aws_security_group.test_alb_sg.id]
+  subnets         = [aws_subnet.public.id, aws_subnet.public_b.id]
 
   enable_deletion_protection = false
   enable_http2               = false
 
-#    prefix  = var.s3_alb_folder
+  #    prefix  = var.s3_alb_folder
 
   tags = merge(tomap({ "Name" = "${local.prefix}-amazon-alb" }), local.common_tags)
 

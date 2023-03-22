@@ -4,11 +4,11 @@
 # --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
 # TF Data : 
 # template_file - 
-# 
 # ------------------------------------------------------------
-
-# Method to render json policy | shell script
-# E014 Exercise
+# Nota : 
+# - TF simple pasando el puerto solamaente e instalando stress en las instancias
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# ------------------------------------------------------------
 
 # 
 

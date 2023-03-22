@@ -1,6 +1,6 @@
 <!-- Proyecto : # docs-tf -->
 # Informacion de Terraform - Realidad practica
-<!-- Nivel 1 -  V0.0.3 - 2023 Feb -->
+<!-- Nivel 1 -  V0.0.4 - 2023 Mar -->
 
 ## Secciones
 
@@ -38,14 +38,13 @@ Pues aparte de minimizar los costes, hay que minimizar la complejidad de las mis
 
 ### Recordando Terraform
 
-El problema con estas tecnologías tan complejas y amplias es que una estructura con gran complejidad, que se alcanza de forma rápida en cuanto intentamos usar varias instancias, al estar tiempo sin usarlo, se olvida.
+El problema con estas tecnologías tan complejas y amplias es que una estructura adquiere gran complejidad, y que se alcanza de forma rápida en cuanto intentamos usar varias instancias / objetos / entidades , al estar tiempo sin usarlo, se olvida.
 
 Entonces es necesario tener ejercicios de readaptación
 
 A su vez hay tanta información y es tan complejo que los tutoriales realmente confunden, ya que mezclan y mezclan cosas para ser más llamativos y dar la sensación que son mejores.
 
 Luego los cursos están bien, si están muy bien, pero aún con ellos se queda incompleto y aunque tu eres capaz como ingeniero de seguirlos y de completarlos, ayudado por más cursos y certificaciones, aún así falta una práctica real donde tu vayas decidiendo que hacer y cómo hacerlo, en resumen te autopreparas para tu propia arquitectura terraform aws.
-
 
 ### A_Exercises - Ejercicios
 
@@ -74,12 +73,20 @@ Ejercicio 14 : Habilitar logs para el balanceador.             \
 Ejercicio 15 : Reglas balanceador. Deteccion Dispositivo, Protocolo, Uri o Host ( Status : Working )         \
 Ejercicio 16 : Redireccion de HTTP a HTTPS para movil e carga de imagen de S3 ( Status : Working )    \
 Ejercicio 17 : Probar balanceador de Red : NLB ( Status : Pending )  \
-Ejercicio 18 : Integrar CDN - Cloudfront en Arquitectura del ALB  ( Status : Working )
-Ejercicio 19 : Validacion de Cname/Alias SSL con balanceadores ( Status : Working )
-Ejercicio 20 : Integrar CDN - Cloudfront en Arquitectura del ALB con Www - subominios  ( Status : Working )
-Ejercicio 21 : Autoscaling en ALB ( Status : Working )
-Ejercicio 22 : Autoscaling en ALB con notificacion SNS y composicion de alarmas ( Status : Working )
-Ejercicio 23 : Integracion de SQS en la respuesta web
+Ejercicio 18 : Integrar CDN - Cloudfront en Arquitectura del ALB  ( Status : Working )  \
+Ejercicio 19 : Validacion de Cname/Alias SSL con balanceadores ( Status : Working )     \
+Ejercicio 20 : Integrar CDN - Cloudfront en Arquitectura del ALB con Www - subominios ( Status : Working )  \
+Ejercicio 21 : Autoscaling en ALB con Launch Configuration ( Status : Working )  \
+Ejercicio 22 : Autoscaling en ALB con notificacion SNS y composicion de alarmas ( Status : Working )  \
+Ejercicio 23 : SQS. Probando y entendiendo el envio de mensajes ( Status : Wroking )  \
+Ejercicio 24 : Integracion de SQS en la respuesta web. Aplicaciones desacopladas ( Status : Working )   \
+Ejercicio 25 : Acercamiento a DynamoDB como base de datos No Relacional (Status : Working )          \
+Ejercicio 26 : Ejecución de instancia EC2 que hace una consulta a dynamodb (Status : Working )       \
+Ejercicio 27 : Acercamiento a RDS como base de datos Relacional (Status : Pending )          
+
+
+...
+Ejercicio 34 : Autoscaling en ALB con Launch Template ( Status : Pending )
 
 
 ### B_Future  - Futuro - Arquitectura escalable 

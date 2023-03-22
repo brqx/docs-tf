@@ -17,13 +17,13 @@ resource "aws_sns_topic" "prueba" {
 resource "aws_sns_topic_subscription" "prueba_sub" {
   topic_arn = aws_sns_topic.prueba.arn
   protocol  = "email"
-  endpoint  = "r23@mailz.es"
+  endpoint  = local.email
 }
 
 resource "aws_sns_topic_policy" "default" {
-  arn = "${aws_sns_topic.prueba.arn}"
+  arn = aws_sns_topic.prueba.arn
 
-  policy = "${data.aws_iam_policy_document.sns-topic-policy.json}"
+  policy = data.aws_iam_policy_document.sns-topic-policy.json
 }
 
 data "aws_iam_policy_document" "sns-topic-policy" {

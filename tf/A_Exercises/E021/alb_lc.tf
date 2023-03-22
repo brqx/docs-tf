@@ -5,6 +5,10 @@
 # TF Entities : 
 # aws_launch_configuration
 # ------------------------------------------------------------
+# Nota : 
+# - Definicion de los parametros de las instancias a generar
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# ------------------------------------------------------------
 
 
 # Get User data
@@ -16,16 +20,21 @@
 resource "aws_launch_configuration" "main" {
   name_prefix = local.resource_name
 
-  image_id      = data.aws_ami.amazon_linux_2_latest.id 
+  image_id      = data.aws_ami.amazon_linux_2_latest.id
   instance_type = local.ec2_instance_type
 
-  key_name      = local.key_name
+  key_name = local.key_name
 
-#  availability_zone = "${local.aws_region}a"
+  #  availability_zone = "${local.aws_region}a"
 
   security_groups             = [aws_security_group.allow_ssh_and_http_sg.id]
   associate_public_ip_address = true
   user_data                   = data.template_file.ec2_shell_template.rendered
+
+  # Prueba con instancias spot
+  # ValidationError: Invalid bid price: 0.00001. Bid price must be greater than or equal to 0.001
+  # Failed: Your Spot request price of 0.001 is lower than the minimum required Spot request fulfillment price of 0.005. Launching EC2 instance failed.
+  spot_price = "0.005"
 
   lifecycle {
     create_before_destroy = true

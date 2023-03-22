@@ -1,0 +1,1 @@
+../E025/dynamodb_items.tf

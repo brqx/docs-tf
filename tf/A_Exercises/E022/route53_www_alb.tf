@@ -42,7 +42,7 @@ resource "aws_route53_record" "www_alb_rc" {
     zone_id                = aws_lb.test_alb.zone_id
     evaluate_target_health = true
   }
-  depends_on = [ aws_lb.test_alb, aws_route53_record.alb_rc ]
+  depends_on = [aws_lb.test_alb, aws_route53_record.alb_rc]
 }
 
 

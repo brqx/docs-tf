@@ -1,4 +1,4 @@
-# route53.tf
+# route53_alb.tf
 # ------------------------------------------------------------
 # Exercise E011 .. E00n
 # --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
@@ -8,7 +8,7 @@
 # ------------------------------------------------------------
 
 data "aws_route53_zone" "main" {
-  name         = var.domain_name
+  name = var.domain_name
   # Debemos poner a false la zona privada
   # Tambien hay opcion de crear/gestionar zonas privadas accesibles solo desde dentro de Aws/Vpc
   private_zone = false
@@ -29,7 +29,7 @@ resource "aws_route53_record" "alb_rc" {
     zone_id                = aws_lb.test_alb.zone_id
     evaluate_target_health = true
   }
-  depends_on = [ aws_lb.test_alb ]
+  depends_on = [aws_lb.test_alb]
 }
 
 # Refs:

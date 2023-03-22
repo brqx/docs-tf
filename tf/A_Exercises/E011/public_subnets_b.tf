@@ -1,4 +1,4 @@
-# public_subnets.tf
+# public_subnets_b.tf
 # ------------------------------------------------------------
 # Exercise E001 .. E00n
 # --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
@@ -22,7 +22,7 @@ resource "aws_subnet" "public_b" {
   vpc_id                  = local.vpc_id
   availability_zone       = "${data.aws_region.current.name}${var.azs["zone_b"].az}"
 
-  tags = merge( local.common_tags, tomap({ "Name" = "${local.prefix}-${var.azs["zone_b"].name}" })  )
+  tags = merge(local.common_tags, tomap({ "Name" = "${local.prefix}-${var.azs["zone_b"].name}" }))
 }
 
 

@@ -1,7 +1,7 @@
 # Get CPU Stats
 # Hace un muestreo desde el principio al final
 # Y va cogiendo datos cada XX segundos ( que es el periodo)
-startTime="2023-03-10T08:00:00"
+startTime="2023-03-13T08:00:00"
 endTime="$(date '+%Y-%m-%dT%H:%M:%S')"
 echo "Chequeo instancias - EC2 ${startTime} --> ${endTime} "
 echo "-----------------------------------------------------"

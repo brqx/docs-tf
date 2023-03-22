@@ -5,28 +5,33 @@
 # TF Entities : 
 # aws_security_group
 # ------------------------------------------------------------
+# Nota : 
+# - Grupo de seguridad para las Instancias BRQX
+# --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==
+# ------------------------------------------------------------
+
 
 
 resource "aws_security_group" "allow_ssh_and_http_sg" {
   name        = "allow_ssh_and_http_from_anywhere"
   description = "Allow BRQX SSH and HTTP inbound connections"
 
-  vpc_id      = local.vpc_id
+  vpc_id = local.vpc_id
 
   # Vamos a intentar que acepte 60022
   ingress {
-    from_port = 60022
-    to_port   = 60022
-    protocol  = "tcp"
+    from_port   = 60022
+    to_port     = 60022
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   # Vamos a intentar que acepte pings
   # Assuming you want to allow a ping (Echo) to your server you can use the following terraform configuration
   ingress {
-    protocol  = "icmp"
-    from_port = 8
-    to_port = 0
+    protocol    = "icmp"
+    from_port   = 8
+    to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
 

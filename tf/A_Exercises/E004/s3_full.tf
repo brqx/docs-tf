@@ -18,7 +18,7 @@ data "aws_s3_bucket" "mybucket" {
 # Template file for IAM Policy
 
 data "template_file" "s3_read_access_policy_template" {
-  template = file("${local.tf_shell_path}policy/only_read_s3.policy")
+  template = file("${local.tf_shell_path}policy/for_roles/s3/only_read_s3.policy")
 
   # Son variables que se interpolan cuando se interpreta el fichero
   vars = {
